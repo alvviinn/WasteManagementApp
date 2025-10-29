@@ -1,0 +1,106 @@
+{
+  "project_info": {
+    "project_number": "30930179133",
+    "firebase_url": "https://hidden-gems-dacc9-default-rtdb.firebaseio.com",
+    "project_id": "hidden-gems-dacc9",
+    "storage_bucket": "hidden-gems-dacc9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:30930179133:android:7513e5221f4e96eafc4654",
+        "android_client_info": {
+          "package_name": "com.example.hangout_hub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "30930179133-1tmjj8jhtb80bnnivn1vcq2ijpsfnr81.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4-TAgNyIDgw17GL24ohUz_DPgGXSp8XI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "30930179133-1tmjj8jhtb80bnnivn1vcq2ijpsfnr81.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:30930179133:android:8b5de09b0e4591e1fc4654",
+        "android_client_info": {
+          "package_name": "com.example.hiddengems"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "30930179133-37erdig6u2t6vulb988fkblipl05eev8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hiddengems",
+            "certificate_hash": "bf7c63e7be84c46ac25b03017ef5abdf786a91f1"
+          }
+        },
+        {
+          "client_id": "30930179133-1tmjj8jhtb80bnnivn1vcq2ijpsfnr81.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4-TAgNyIDgw17GL24ohUz_DPgGXSp8XI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "30930179133-1tmjj8jhtb80bnnivn1vcq2ijpsfnr81.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:30930179133:android:2e3a47deb3358e25fc4654",
+        "android_client_info": {
+          "package_name": "com.example.wastemanagementapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "30930179133-1tmjj8jhtb80bnnivn1vcq2ijpsfnr81.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4-TAgNyIDgw17GL24ohUz_DPgGXSp8XI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "30930179133-1tmjj8jhtb80bnnivn1vcq2ijpsfnr81.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
