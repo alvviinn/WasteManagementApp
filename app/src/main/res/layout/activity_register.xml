@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="24dp"
+        android:id="@+id/main"
         android:gravity="center_horizontal">
 
         <!-- App Logo or Icon -->
@@ -20,9 +21,8 @@
             android:id="@+id/signupLogo"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:src="@drawable/gemini_generated"
             android:layout_marginTop="40dp"
-            android:src="@drawable/ic_signup_logo"
-            android:contentDescription="@string/app_logo"
             android:layout_gravity="center"/>
 
         <!-- Page Title -->
