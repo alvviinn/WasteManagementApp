@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace = "com.example.wastemanagementapp"
-    compileSdk = 34 // ✅ Use an integer value, not a function
+    compileSdk = 36 // ✅ Use an integer value, not a function
 
     defaultConfig {
         applicationId = "com.example.wastemanagementapp"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
