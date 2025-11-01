@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.example.wastemanagementapp"
-    compileSdk = 36 // ✅ Use an integer value, not a function
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.wastemanagementapp"
@@ -44,10 +44,16 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.cardview)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
     // Firebase dependencies
     implementation(platform("com.google.firebase:firebase-bom:34.4.0"))
+    implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-firestore")
+    implementation("com.google.firebase:firebase-database")
+    implementation("com.google.firebase:firebase-storage")
+
 }

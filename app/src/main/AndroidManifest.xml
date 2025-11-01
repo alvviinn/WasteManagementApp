@@ -12,7 +12,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WasteManagementApp">
         <activity
+            android:name=".Collector_Dashboard"
+            android:exported="false" />
+        <activity
+            android:name=".Admin_Dashboard"
+            android:exported="false" />
+        <activity
+            android:name=".Resident_Dashboard"
+            android:exported="false" />
+        <activity
+            android:name=".Register_Activity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Login_Activity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
