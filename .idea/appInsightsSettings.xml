@@ -9,10 +9,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.example.wastemanagementapp" />
+                  <option name="mobileSdkAppId" value="1:417311255220:android:dbc621b6ff74e5be0a05e1" />
+                  <option name="projectId" value="waste-management-b85ec" />
+                  <option name="projectNumber" value="417311255220" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

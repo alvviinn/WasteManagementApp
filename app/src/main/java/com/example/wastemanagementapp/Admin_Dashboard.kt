@@ -1,20 +1,60 @@
 package com.example.wastemanagementapp
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.*
 
 class Admin_Dashboard : AppCompatActivity() {
+
+    private lateinit var recyclerApplications: RecyclerView
+    private lateinit var dbRef: DatabaseReference
+    private val applicationsList = mutableListOf<CollectorApplication>()
+    private lateinit var adapter: ApplicationAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_admin_dashboard)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        recyclerApplications = findViewById(R.id.recyclerApplications)
+        recyclerApplications.layoutManager = LinearLayoutManager(this)
+
+        dbRef = FirebaseDatabase.getInstance().getReference("CollectorApplications")
+
+        adapter = ApplicationAdapter(applicationsList) { userId ->
+            approveApplication(userId)
         }
+
+        recyclerApplications.adapter = adapter
+        loadPendingApplications()
+    }
+
+    private fun loadPendingApplications() {
+        dbRef.orderByChild("status").equalTo("pending").addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                applicationsList.clear()
+                for (data in snapshot.children) {
+                    val app = data.getValue(CollectorApplication::class.java)
+                    if (app != null) applicationsList.add(app)
+                }
+                adapter.notifyDataSetChanged()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@Admin_Dashboard, "Error: ${error.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun approveApplication(userId: String) {
+        dbRef.child(userId).child("status").setValue("approved")
+            .addOnSuccessListener {
+                Toast.makeText(this, "Application Approved", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "Error: ${it.message}", Toast.LENGTH_SHORT).show()
+            }
     }
 }

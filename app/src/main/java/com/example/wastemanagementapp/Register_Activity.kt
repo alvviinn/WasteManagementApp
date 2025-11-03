@@ -103,7 +103,7 @@ class Register_Activity : AppCompatActivity() {
                                         when (selectedRole) {
                                             "Admin" -> startActivity(Intent(this, Admin_Dashboard::class.java))
                                             "Collector" -> startActivity(Intent(this, Collector_Dashboard::class.java))
-                                            else -> startActivity(Intent(this, Resident_Dashboard::class.java))
+                                            else -> startActivity(Intent(this, Residents_Page1::class.java))
                                         }
 
                                         finish()

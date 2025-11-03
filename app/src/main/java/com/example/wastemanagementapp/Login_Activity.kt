@@ -7,9 +7,17 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import android.widget.*
+import com.google.firebase.auth.*
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.auth.FirebaseAuth
 
 class Login_Activity : AppCompatActivity() {
+    private lateinit var email: EditText
+    private lateinit var password: EditText
+    private lateinit var btnLogin: Button
+    private lateinit var signup: TextView
+    private lateinit var forgotPassword: TextView
 
     private lateinit var lemail: EditText
     private lateinit var lpassword: EditText
@@ -63,7 +71,7 @@ class Login_Activity : AppCompatActivity() {
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
                             Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
-                            startActivity(Intent(this, Resident_Dashboard::class.java))
+                            startActivity(Intent(this, Residents_Page1::class.java))
                             finish()
                         } else {
                             Toast.makeText(this, "Login failed: ${task.exception?.message}", Toast.LENGTH_LONG).show()
