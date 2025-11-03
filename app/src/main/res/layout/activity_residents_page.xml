@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinator_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.resident.ResidentDashboardActivity">
+
+    <!-- AppBar -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        style="@style/Widget.MaterialComponents.Toolbar.Primary"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:title="Welcome, {{userName}}"
+        app:titleCentered="false"
+        app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light" />
+
+    <!-- Main content scrollable -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:clipToPadding="false"
+        android:paddingBottom="96dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:id="@+id/content_container"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <!-- Map snippet card (tap to open full map) -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_map_snippet"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <!-- MapView: requires setup in Activity for lifecycle -->
+                    <com.google.android.gms.maps.MapView
+                        android:id="@+id/map_snippet"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <!-- overlay summary (small) -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="8dp"
+                        android:layout_gravity="top|end"
+                        android:background="@drawable/rounded_translucent_bg">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_map_marker"
+                            android:contentDescription="map icon" />
+
+                        <TextView
+                            android:id="@+id/tv_map_snippet_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nearby reports"
+                            android:textAppearance="?attr/textAppearanceBody2"
+                            android:layout_marginStart="6dp" />
+                    </LinearLayout>
+
+                </FrameLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Collection Status Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_collection_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                android:padding="12dp">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_status_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Collection Status"
+                        android:textStyle="bold"
+                        android:textAppearance="?attr/textAppearanceSubtitle1" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="8dp">
+
+                        <ImageView
+                            android:id="@+id/img_status_icon"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@drawable/ic_check_circle"
+                            android:contentDescription="status icon" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginStart="12dp">
+
+                            <TextView
+                                android:id="@+id/tv_today_status"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Today: Pending"
+                                android:textAppearance="?attr/textAppearanceBody1" />
+
+                            <TextView
+                                android:id="@+id/tv_last_and_next"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Last: Oct 30, 2025 • Next: Nov 4, 2025"
+                                android:textAppearance="?attr/textAppearanceCaption" />
+                        </LinearLayout>
+
+                        <ImageButton
+                            android:id="@+id/btn_view_schedule"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:contentDescription="view schedule"
+                            android:src="@drawable/ic_calendar"
+                            android:background="?attr/selectableItemBackgroundBorderless" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Quick Actions -->
+            <LinearLayout
+                android:id="@+id/quick_actions_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="space_between"
+                android:layout_marginBottom="12dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/action_report"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="96dp"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="2dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@drawable/ic_report"
+                            android:contentDescription="report icon" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Report"
+                            android:layout_marginTop="6dp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/action_schedule"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="96dp"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="2dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@drawable/ic_schedule"
+                            android:contentDescription="schedule icon" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Schedule"
+                            android:layout_marginTop="6dp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/action_map"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="96dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="2dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@drawable/ic_map"
+                            android:contentDescription="map icon" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Map"
+                            android:layout_marginTop="6dp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <!-- Community Feed Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:id="@+id/tv_feed_title"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Community Feed"
+                    android:textStyle="bold"
+                    android:textAppearance="?attr/textAppearanceSubtitle1" />
+
+                <ImageButton
+                    android:id="@+id/btn_feed_filter"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_filter_list"
+                    android:contentDescription="filter feed"
+                    android:background="?attr/selectableItemBackgroundBorderless" />
+            </LinearLayout>
+
+            <!-- Community Feed List -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_community_feed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="200dp"
+                android:nestedScrollingEnabled="false"
+                android:clipToPadding="false" />
+
+            <!-- Offline indicator -->
+            <TextView
+                android:id="@+id/tv_offline_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginTop="12dp"
+                android:padding="10dp"
+                android:background="@drawable/rounded_error_bg"
+                android:text="You're currently offline. Reports will be sent when you reconnect."
+                android:textAppearance="?attr/textAppearanceCaption"
+                android:gravity="center" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Floating Action Button for quick report -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_report"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_add_report"
+        android:contentDescription="Report trash"
+        app:tint="@android:color/white"
+        app:layout_anchor="@id/coordinator_root"
+        app:layout_anchorGravity="bottom|end"
+        android:layout_margin="16dp" />
+
+    <!-- Bottom sheet / quick status button (optional) -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_quick_status"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:text="My Reports"
+        android:layout_margin="16dp"
+        app:layout_anchor="@id/coordinator_root"
+        app:layout_anchorGravity="bottom|center_horizontal"
+        android:icon="@drawable/ic_list"
+        android:iconPadding="8dp"
+        android:visibility="visible" />
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
