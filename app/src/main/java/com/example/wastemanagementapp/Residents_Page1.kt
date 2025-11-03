@@ -1,12 +1,19 @@
 package com.example.wastemanagementapp
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class Residents_Page1 : AppCompatActivity() {
+    private lateinit var action_Report : LinearLayout
+    private lateinit var action_schedule : LinearLayout
+    private lateinit var action_map : LinearLayout
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -16,5 +23,27 @@ class Residents_Page1 : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        action_Report = findViewById(R.id.Report_ID)
+
+        action_Report.setOnClickListener {
+            val intent = Intent(this, Residents_Report ::class.java)
+            startActivity(intent)
+        }
+
+        action_schedule = findViewById(R.id.Schedule_ID)
+
+        action_schedule.setOnClickListener {
+            val intent = Intent(this, Residents_Schedule ::class.java)
+            startActivity(intent)
+        }
+
+        action_map = findViewById(R.id.Map_ID)
+
+        action_map.setOnClickListener {
+            val intent = Intent(this, Residents_map ::class.java)
+            startActivity(intent)
+        }
+
     }
 }

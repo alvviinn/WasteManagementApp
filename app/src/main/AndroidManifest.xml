@@ -1,25 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.wastemanagementapp">
 
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="WasteManagementApp"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.WasteManagementApp">
+        android:theme="@style/Theme.WasteManagementApp"
+        tools:targetApi="31">
+
+
         <activity
-            android:name=".MainActivity"
+            android:name=".Login_Activity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Admin_Dashboard"
+            android:exported="false" />
+        <activity
+            android:name=".Register_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Collector_Dashboard"
+            android:exported="false" />
+        <activity
+            android:name=".CollectorApplicationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Residents_map"
+            android:exported="false" />
+        <activity
+            android:name=".Residents_Page1"
+            android:exported="false" />
+        <activity
+            android:name=".Residents_Report"
+            android:exported="false" />
+        <activity
+            android:name=".Residents_Schedule"
+            android:exported="false" />
+
     </application>
 
 </manifest>

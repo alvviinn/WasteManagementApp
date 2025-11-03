@@ -6,81 +6,82 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E8F5E9"
     tools:context=".Residents_Page1">
 
-    <!-- Main content scrollable -->
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize"
         android:clipToPadding="false"
         android:paddingBottom="98dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/content_container"
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Map snippet card (tap to open full map) -->
+            <!-- Map snippet -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_map_snippet"
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
                 android:layout_marginBottom="12dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="4dp"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                app:cardBackgroundColor="#C8E6C9"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <!-- MapView: requires setup in Activity for lifecycle -->
                     <com.google.android.gms.maps.MapView
                         android:id="@+id/map_snippet"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
 
-
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="top|end"
+                        android:background="#A5D6A7"
                         android:orientation="horizontal"
-                        android:padding="8dp"
-                        android:layout_gravity="top|end">
+                        android:padding="8dp">
 
                         <ImageView
                             android:layout_width="20dp"
                             android:layout_height="20dp"
-                            android:src="@drawable/map"
-                            android:contentDescription="map icon" />
+                            android:contentDescription="map icon"
+                            android:src="@drawable/map" />
 
                         <TextView
                             android:id="@+id/tv_map_snippet_label"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
                             android:text="Nearby reports"
                             android:textAppearance="?attr/textAppearanceBody2"
-                            android:layout_marginStart="6dp" />
+                            android:textColor="#1B5E20" />
                     </LinearLayout>
-
                 </FrameLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Collection Status Card -->
+            <!-- Collection Status -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_collection_status"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
+                android:padding="12dp"
+                app:cardBackgroundColor="#C8E6C9"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="2dp"
-                android:padding="12dp">
+                app:cardElevation="2dp">
 
                 <LinearLayout
                     android:id="@+id/Status_ID"
@@ -94,7 +95,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:text="  Collection Status"
-                        android:textAppearance="?attr/textAppearanceSubtitle1"
+                        android:textColor="#1B5E20"
                         android:textStyle="bold" />
 
                     <LinearLayout
@@ -123,39 +124,38 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Today: Pending"
-                                android:textAppearance="?attr/textAppearanceBody1" />
+                                android:textColor="#2E7D32" />
 
                             <TextView
                                 android:id="@+id/tv_last_and_next"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Last: Oct 30, 2025 • Next: Nov 4, 2025"
-                                android:textAppearance="?attr/textAppearanceCaption" />
+                                android:textColor="#388E3C" />
                         </LinearLayout>
-
-
                     </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Quick Actions -->
+            <!-- Quick Actions Row -->
             <LinearLayout
                 android:id="@+id/quick_actions_row"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="12dp">
+                android:layout_marginBottom="12dp"
+                android:orientation="horizontal">
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/action_report"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="96dp"
                     android:layout_marginEnd="8dp"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="2dp"
+                    android:layout_weight="1"
                     android:clickable="true"
-                    android:focusable="true">
+                    android:focusable="true"
+                    app:cardBackgroundColor="#C8E6C9"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="2dp">
 
                     <LinearLayout
                         android:id="@+id/Report_ID"
@@ -163,7 +163,6 @@
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:orientation="vertical">
-
 
                         <ImageView
                             android:layout_width="36dp"
@@ -175,20 +174,22 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
-                            android:text="Report" />
+                            android:text="Report"
+                            android:textColor="#1B5E20" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/action_schedule"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="96dp"
                     android:layout_marginEnd="8dp"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="2dp"
+                    android:layout_weight="1"
                     android:clickable="true"
-                    android:focusable="true">
+                    android:focusable="true"
+                    app:cardBackgroundColor="#C8E6C9"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="2dp">
 
                     <LinearLayout
                         android:id="@+id/Schedule_ID"
@@ -207,19 +208,21 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
-                            android:text="Schedule" />
+                            android:text="Schedule"
+                            android:textColor="#1B5E20" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/action_map"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="96dp"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="2dp"
+                    android:layout_weight="1"
                     android:clickable="true"
-                    android:focusable="true">
+                    android:focusable="true"
+                    app:cardBackgroundColor="#C8E6C9"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="2dp">
 
                     <LinearLayout
                         android:id="@+id/Map_ID"
@@ -238,28 +241,29 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
-                            android:text="Map" />
+                            android:text="Map"
+                            android:textColor="#1B5E20" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
 
-            <!-- Community Feed Header -->
+            <!-- Feed Header -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
                 android:layout_marginTop="6dp"
-                android:layout_marginBottom="8dp">
+                android:layout_marginBottom="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/tv_feed_title"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="Community Feed"
-                    android:textStyle="bold"
-                    android:textAppearance="?attr/textAppearanceSubtitle1" />
+                    android:textColor="#1B5E20"
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:id="@+id/filter_ID"
@@ -267,39 +271,29 @@
                     android:layout_height="40dp"
                     android:contentDescription="more icon"
                     android:src="@drawable/filter" />
-
-
             </LinearLayout>
 
-            <!-- Community Feed List -->
-
-            <!-- Offline indicator -->
-
+            <!-- RecyclerView -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_community_feed"
-                android:layout_width="333dp"
+                android:layout_width="match_parent"
                 android:layout_height="193dp"
                 android:clipToPadding="false"
                 android:minHeight="200dp"
                 android:nestedScrollingEnabled="false" />
 
+            <!-- Offline Indicator -->
             <TextView
                 android:id="@+id/tv_offline_indicator"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
                 android:layout_marginTop="12dp"
+                android:background="#66BB6A"
+                android:gravity="center"
                 android:padding="10dp"
-                android:background="@drawable/noconnection"
                 android:text="You're currently offline. Reports will be sent when you reconnect."
-                android:textAppearance="?attr/textAppearanceCaption"
-                android:gravity="center" />
-
+                android:textColor="#FFFFFF"
+                android:visibility="gone" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
-

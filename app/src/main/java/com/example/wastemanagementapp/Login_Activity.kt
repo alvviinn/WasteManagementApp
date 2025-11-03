@@ -40,17 +40,16 @@ class Login_Activity : AppCompatActivity() {
             insets
         }
 
-        // Initialize Firebase Auth
+
         auth = FirebaseAuth.getInstance()
 
-        // Initialize UI elements
         lemail = findViewById(R.id.email)
         lpassword = findViewById(R.id.password)
         lbtnLogin = findViewById(R.id.btnLogin)
         lsignup = findViewById(R.id.signup)
         lforgot = findViewById(R.id.forgotPassword)
 
-        // Login button listener
+
         lbtnLogin.setOnClickListener {
             val email = lemail.text.toString().trim()
             val password = lpassword.text.toString().trim()
@@ -60,13 +59,13 @@ class Login_Activity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Admin login check
+
             if (email == adminEmail && password == adminPassword) {
                 Toast.makeText(this, "Admin login successful", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, Admin_Dashboard::class.java))
                 finish()
             } else {
-                // Firebase login for residents
+
                 auth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
@@ -80,13 +79,13 @@ class Login_Activity : AppCompatActivity() {
             }
         }
 
-        // Go to sign-up screen
+
         lsignup.setOnClickListener {
             val intent = Intent(this, Register_Activity::class.java)
             startActivity(intent)
         }
 
-        // Forgot password
+
         lforgot.setOnClickListener {
             val email = lemail.text.toString().trim()
             if (email.isEmpty()) {
