@@ -9,7 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 
 class ApplicationAdapter(
     private val applications: List<CollectorApplication>,
-    private val onApproveClick: (String) -> Unit
+    private val onApproveClick: (String) -> Unit,
+    private val onRejectClick: (String) -> Unit
 ) : RecyclerView.Adapter<ApplicationAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -18,6 +19,7 @@ class ApplicationAdapter(
         val tvWorkLocation: TextView = view.findViewById(R.id.tvWorkLocation)
         val tvEmployeeNumber: TextView = view.findViewById(R.id.tvEmployeeNumber)
         val btnApprove: Button = view.findViewById(R.id.btnApprove)
+        val btnReject: Button = view.findViewById(R.id.btnReject)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -34,6 +36,9 @@ class ApplicationAdapter(
         holder.tvEmployeeNumber.text = "Employee No: ${app.employeeNumber}"
 
         holder.btnApprove.setOnClickListener {
+            app.userId?.let { id -> onApproveClick(id) }
+        }
+        holder.btnReject.setOnClickListener {
             app.userId?.let { id -> onApproveClick(id) }
         }
     }

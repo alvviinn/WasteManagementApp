@@ -6,13 +6,14 @@
     android:layout_margin="8dp"
     card_view:cardCornerRadius="12dp"
     card_view:cardElevation="4dp"
-    android:background="#FFFFFF">
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:background="#D8F3DC">
 
         <TextView
             android:id="@+id/tvFullName"
@@ -27,28 +28,49 @@
             android:id="@+id/tvNationalId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="National ID" />
+            android:text="National ID"
+            android:textColor="#2E7D32"/>
 
         <TextView
             android:id="@+id/tvWorkLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Work Location" />
+            android:text="Work Location"
+            android:textColor="#2E7D32"/>
 
         <TextView
             android:id="@+id/tvEmployeeNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Employee Number" />
+            android:text="Employee Number"
+            android:textColor="#2E7D32"/>
 
-        <Button
-            android:id="@+id/btnApprove"
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Approve"
-            android:backgroundTint="#2E7D32"
-            android:textColor="@android:color/white"
             android:layout_marginTop="10dp"
-            android:layout_gravity="end" />
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnReject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reject"
+                android:backgroundTint="#C62828"
+                android:textColor="@android:color/white"
+                android:layout_marginEnd="12dp" />
+
+            <Button
+                android:id="@+id/btnApprove"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Approve"
+                android:backgroundTint="#2E7D32"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>

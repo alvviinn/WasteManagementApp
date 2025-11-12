@@ -25,9 +25,12 @@ class Admin_Dashboard : AppCompatActivity() {
         dbRef = FirebaseDatabase.getInstance().getReference("CollectorApplications")
         usersRef = FirebaseDatabase.getInstance().getReference("users")
 
-        adapter = ApplicationAdapter(applicationsList) { userId ->
-            approveApplication(userId)
-        }
+        // Updated adapter with both approve and reject handlers
+        adapter = ApplicationAdapter(
+            applicationsList,
+            onApproveClick = { userId -> approveApplication(userId) },
+            onRejectClick = { userId -> rejectApplication(userId) }
+        )
 
         recyclerApplications.adapter = adapter
         loadPendingApplications()
@@ -60,6 +63,21 @@ class Admin_Dashboard : AppCompatActivity() {
         FirebaseDatabase.getInstance().reference.updateChildren(updates)
             .addOnSuccessListener {
                 Toast.makeText(this, "Application Approved", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "Error: ${it.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun rejectApplication(userId: String) {
+        // Update only the application status or optionally remove the record
+        val updates = mapOf(
+            "CollectorApplications/$userId/status" to "rejected"
+        )
+
+        FirebaseDatabase.getInstance().reference.updateChildren(updates)
+            .addOnSuccessListener {
+                Toast.makeText(this, "Application Rejected", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener {
                 Toast.makeText(this, "Error: ${it.message}", Toast.LENGTH_SHORT).show()
