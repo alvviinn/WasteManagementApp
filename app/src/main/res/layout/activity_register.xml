@@ -63,7 +63,7 @@
             android:id="@+id/confirmPasswordInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
+            android:hint="Confirm Password"
             android:drawableStart="@drawable/ic_lock"
             android:inputType="textPassword"
             android:backgroundTint="#74C69D"

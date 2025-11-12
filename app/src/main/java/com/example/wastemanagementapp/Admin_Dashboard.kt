@@ -11,6 +11,7 @@ class Admin_Dashboard : AppCompatActivity() {
 
     private lateinit var recyclerApplications: RecyclerView
     private lateinit var dbRef: DatabaseReference
+    private lateinit var usersRef: DatabaseReference
     private val applicationsList = mutableListOf<CollectorApplication>()
     private lateinit var adapter: ApplicationAdapter
 
@@ -22,6 +23,7 @@ class Admin_Dashboard : AppCompatActivity() {
         recyclerApplications.layoutManager = LinearLayoutManager(this)
 
         dbRef = FirebaseDatabase.getInstance().getReference("CollectorApplications")
+        usersRef = FirebaseDatabase.getInstance().getReference("users")
 
         adapter = ApplicationAdapter(applicationsList) { userId ->
             approveApplication(userId)
@@ -49,7 +51,13 @@ class Admin_Dashboard : AppCompatActivity() {
     }
 
     private fun approveApplication(userId: String) {
-        dbRef.child(userId).child("status").setValue("approved")
+        // Update both application status and user role
+        val updates = mapOf(
+            "CollectorApplications/$userId/status" to "approved",
+            "users/$userId/role" to "collector"
+        )
+
+        FirebaseDatabase.getInstance().reference.updateChildren(updates)
             .addOnSuccessListener {
                 Toast.makeText(this, "Application Approved", Toast.LENGTH_SHORT).show()
             }

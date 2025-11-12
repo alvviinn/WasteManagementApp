@@ -59,6 +59,17 @@ class Register_Activity : AppCompatActivity() {
             // Create account in Firebase Auth
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
+
+                    val userId = auth.currentUser?.uid ?: return@addOnCompleteListener
+                    val userMap = mapOf(
+                        "email" to email,
+                        "role" to "resident"
+                    )
+
+                    FirebaseDatabase.getInstance().getReference("users").child(userId)
+                        .setValue(userMap)
+
+
                     if (task.isSuccessful) {
                         Toast.makeText(this, "Account created successfully", Toast.LENGTH_SHORT).show()
                         startActivity(Intent(this, Residents_Page1::class.java))

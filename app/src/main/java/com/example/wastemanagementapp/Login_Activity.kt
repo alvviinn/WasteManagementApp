@@ -69,13 +69,29 @@ class Login_Activity : AppCompatActivity() {
                 auth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
-                            startActivity(Intent(this, Residents_Page1::class.java))
-                            finish()
+                            val userId = auth.currentUser?.uid ?: return@addOnCompleteListener
+                            val userRef = FirebaseDatabase.getInstance().getReference("users").child(userId)
+
+                            userRef.get().addOnSuccessListener { snapshot ->
+                                val role = snapshot.child("role").value?.toString()
+
+                                when (role) {
+                                    "collector" -> {
+                                        startActivity(Intent(this, Collector_Dashboard::class.java))
+                                    }
+                                    else -> {
+                                        startActivity(Intent(this, Residents_Page1::class.java))
+                                    }
+                                }
+                                finish()
+                            }.addOnFailureListener {
+                                Toast.makeText(this, "Error fetching user data: ${it.message}", Toast.LENGTH_SHORT).show()
+                            }
                         } else {
                             Toast.makeText(this, "Login failed: ${task.exception?.message}", Toast.LENGTH_LONG).show()
                         }
                     }
+
             }
         }
 
